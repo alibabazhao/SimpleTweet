@@ -13,11 +13,15 @@ public class Tweet {
     public String createdAt;
     public User user;
 
+    public long id;
+
     public static Tweet fromJason(JSONObject jsonObject) throws JSONException {
         Tweet tweet=new Tweet();
         tweet.body=jsonObject.getString("text");
         tweet.createdAt=jsonObject.getString("created_at");
         tweet.user=User.fromJson(jsonObject.getJSONObject("user"));
+
+        tweet.id=jsonObject.getLong("id");
         return tweet;
     }
 
